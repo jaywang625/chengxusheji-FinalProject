@@ -1,0 +1,21 @@
+# Code::Blocks 自动生成文件
+*.depend
+*.layout
+
+# 编译输出目录
+bin/
+obj/
+
+# 编译产物
+*.exe
+*.o
+*.obj
+*.pdb
+*.ilk
+
+# 系统/IDE 临时文件
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
