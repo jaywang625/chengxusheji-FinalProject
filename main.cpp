@@ -427,30 +427,30 @@ public:
         sprintf(buf, "%d", stepCount);
         outtextxy(100, 10, buf);
 
-        outtextxy(450, 10, "Best: ");
+        outtextxy(390, 10, "Best: ");
         if (bestSteps < 9999) {
             sprintf(buf, "%d", bestSteps);
         } else {
             sprintf(buf, "--");
         }
-        outtextxy(520, 10, buf);
+        outtextxy(525, 10, buf);
 
         setcolor(RGB(218, 165, 32));   // 金色显示当前 Target
-        outtextxy(450, 35, "Target: ");
+        outtextxy(390, 35, "Target: ");
         char targetStr[10];
         sprintf(targetStr, "%d-%d-%d", target[0], target[1], target[2]);
-        outtextxy(520, 35, targetStr);
+        outtextxy(525, 35, targetStr);
+        setcolor(RGB(0, 0, 0));   // 恢复黑色，避免后续文字继承金色
 
-        outtextxy(450, 60, "Remaining: ");
+        outtextxy(390, 60, "Remaining: ");
         sprintf(buf, "%d", TARGET_GROUPS - groupsMatched);
-        outtextxy(550, 60, buf);
+        outtextxy(525, 60, buf);
 
         // 显示下一个目标预览，帮助玩家提前规划移动
-        setcolor(RGB(0, 0, 0));   // 黑色显示 Next Target
-        outtextxy(450, 85, "Next Target: ");
+        outtextxy(390, 85, "Next Target: ");
         char nextStr[10];
         sprintf(nextStr, "%d-%d-%d", nextTarget[0], nextTarget[1], nextTarget[2]);
-        outtextxy(555, 85, nextStr);
+        outtextxy(525, 85, nextStr);
 
         if (head) {
             // ����ֻ����һ�Σ�����ÿ���ƶ����¼������壨EGE ??setfont ������
