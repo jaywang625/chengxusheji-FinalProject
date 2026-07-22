@@ -391,7 +391,7 @@ public:
     // ---------- Drawing ----------
     void draw() {
         settarget(buffer);
-        setbkcolor(RGB(34, 139, 34));   // 绿色背景（森林绿）
+        setbkcolor(RGB(240, 240, 240));   // 灰色背景
         cleardevice();
 
         if (state == STATE_PLAYING) {
@@ -740,7 +740,7 @@ public:
     void run() {
         initgraph(WIN_W, WIN_H);
         buffer = newimage(WIN_W, WIN_H);
-        setbkcolor(RGB(34, 139, 34));   // 绿色背景（森林绿）
+        setbkcolor(RGB(240, 240, 240));   // 灰色背景
 
         state = STATE_HELP;
         needRedraw = true;
