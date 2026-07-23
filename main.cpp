@@ -466,10 +466,14 @@ public:
         sprintf(buf, "%d", TARGET_GROUPS - groupsMatched);
         outtextxy(525, 60, buf);
 
-        // 显示下一个目标预览，帮助玩家提前规划移动
+        // 显示下一个目标预览，最后一组时显示 -- 表示没有下一步
         outtextxy(390, 85, "Next Target: ");
         char nextStr[10];
-        sprintf(nextStr, "%d-%d-%d", nextTarget[0], nextTarget[1], nextTarget[2]);
+        if (groupsMatched >= TARGET_GROUPS - 1) {
+            sprintf(nextStr, "--");
+        } else {
+            sprintf(nextStr, "%d-%d-%d", nextTarget[0], nextTarget[1], nextTarget[2]);
+        }
         outtextxy(525, 85, nextStr);
 
         if (head) {
