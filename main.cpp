@@ -289,6 +289,13 @@ public:
         target[0] = nextTarget[0];
         target[1] = nextTarget[1];
         target[2] = nextTarget[2];
+        // 晋升的 Next Target 基于旧牌面生成，消除后牌面已变，
+        // 需检查目标值是否仍存在于当前牌面，不存在则从当前牌面重新生成
+        int cnt[15];
+        getValueCount(cnt);
+        if (cnt[target[0]] == 0 || cnt[target[1]] == 0 || cnt[target[2]] == 0) {
+            generateOneTarget(target);
+        }
         generateOneTarget(nextTarget);
         int attempts = 0;
         while (nextTarget[0] == target[0] && nextTarget[1] == target[1] && nextTarget[2] == target[2]
