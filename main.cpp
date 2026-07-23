@@ -275,7 +275,20 @@ public:
 
     void generateTarget() {
         generateOneTarget(target);
-        // 生成 nextTarget 预览，确保与当前 target 不同（否则预览无意义�?
+        generateOneTarget(nextTarget);
+        int attempts = 0;
+        while (nextTarget[0] == target[0] && nextTarget[1] == target[1] && nextTarget[2] == target[2]
+               && attempts < MAX_LOOP) {
+            attempts++;
+            generateOneTarget(nextTarget);
+        }
+    }
+
+    // Next Target 晋升为当�?Target，再生成新的 Next Target 预览
+    void promoteNextTarget() {
+        target[0] = nextTarget[0];
+        target[1] = nextTarget[1];
+        target[2] = nextTarget[2];
         generateOneTarget(nextTarget);
         int attempts = 0;
         while (nextTarget[0] == target[0] && nextTarget[1] == target[1] && nextTarget[2] == target[2]
@@ -320,7 +333,7 @@ public:
             }
         }
         if (eliminated > 0 && !gameOver) {
-            generateTarget();
+            promoteNextTarget();
         }
         return eliminated;
     }
@@ -440,7 +453,7 @@ public:
         char targetStr[10];
         sprintf(targetStr, "%d-%d-%d", target[0], target[1], target[2]);
         outtextxy(525, 35, targetStr);
-        setcolor(RGB(0, 0, 0));   // 恢复黑色，避免后续文字继承金色
+        setcolor(RGB(0, 0, 0));   // 恢复黑色，避免后续文字继承金�?
 
         outtextxy(390, 60, "Remaining: ");
         sprintf(buf, "%d", TARGET_GROUPS - groupsMatched);
